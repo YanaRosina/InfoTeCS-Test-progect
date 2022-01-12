@@ -1,0 +1,14 @@
+
+
+/*Table*/
+.table {
+    width: 50%;
+   /* border: 1px solid green;*/
+    border-color:grey;
+    margin: auto;
+}
+.table_head {
+    text-align: center;
+    color: indianred;
+    border: 1px solid indianred;
+}
