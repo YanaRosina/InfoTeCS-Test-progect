@@ -7,7 +7,6 @@ table {
     color: rgb(68, 68, 68);
     font-size: 15px;
     font-family: 'Inter', sans-serif;
-    border-collapse: collapse;
     text-align: center;
     margin: auto;
     width: 50%;
@@ -15,19 +14,22 @@ table {
 
 th {
     background: #AFCDE7;
-    padding: 10px 20px;
+    padding: 10px 30px;
+    white-space: nowrap;
 
 }
 
 th,
 td {
     border-style: solid;
-    border-width: 0 1px 1px 0;
-    border-color: #AFCDE7;
+    border-width: 1px;
+    border-color: #859baf;
+    
 }
 
 td {
     background: #D8E6F3;
+    padding: 2px;
 }
 
 .module {
@@ -38,4 +40,33 @@ td {
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: left;
+    padding: 2px; 
+    border-width: 1px;
+    padding: 2px 10px;
+}
+
+/* Sort*/
+
+.table_sort th {
+    cursor: pointer;
+}
+
+
+th.sorted[data-order="1"],
+th.sorted[data-order="-1"] {
+    position: relative;
+}
+
+th.sorted[data-order="1"]::after,
+th.sorted[data-order="-1"]::after {
+    right: 8px;
+    position: absolute;
+}
+
+th.sorted[data-order="-1"]::after {
+	content: "▼"
+}
+
+th.sorted[data-order="1"]::after {
+	content: "▲"
 }
