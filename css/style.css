@@ -1,6 +1,13 @@
 body {
     background-color: #d7e0e9;
+    display: flex;
+    position: relative;
 }
+/*body, html { 
+    width: 100%;
+    height: 100%;
+}*/
+
 
 /*Table*/
 table {
@@ -8,9 +15,10 @@ table {
     font-size: 15px;
     font-family: 'Inter', sans-serif;
     text-align: center;
-    margin: auto;
+    /*margin: left;*/
     width: 50%;
 }
+
 
 th {
     background: #AFCDE7;
@@ -30,6 +38,7 @@ td {
 td {
     background: #D8E6F3;
     padding: 2px;
+   /* min-height: 45px;*/
 }
 
 .module {
@@ -44,6 +53,25 @@ td {
     border-width: 1px;
     padding: 2px 10px;
 }
+
+
+/*Editing block*/
+.editing_block {
+    width: 50%;
+    height: 100%;
+    min-height: 100%;
+    margin-top: 45px;
+    position: relative; 
+}
+.editing_div {
+    width: 100%;
+    height: 40px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #859baf;
+    padding: 2px;
+}
+
 
 /* Sort*/
 
@@ -70,3 +98,142 @@ th.sorted[data-order="-1"]::after {
 th.sorted[data-order="1"]::after {
 	content: "▲"
 }
+
+/* Modal */
+.modal_block {
+    position: fixed;
+    font-family: 'Inter', sans-serif;
+    display: none;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, .5)
+}
+.modal_dialog {
+    max-width: 400px;
+    margin: 40px auto;
+}
+.modal_content {
+    position: relative;
+    width: 100%;
+    padding: 40px;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 4px;
+    overflow-y: auto;
+}
+
+.modal_close {
+    position: absolute;
+    top: 8px;
+    right: 14px;
+    font-size: 30px;
+    color: #000;
+    opacity: .5;
+    font-weight: 700;
+    border: none;
+    background-color: transparent;
+    cursor: pointer
+}
+
+.modal_title {
+    text-align: center;
+    font-size: 22px;
+    text-transform: uppercase
+}
+
+.modal_input {
+    margin: 10px auto 10px auto;
+    height: 50px;
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, .2);
+    border: none;
+    font-size: 18px;
+    text-align: center;
+    outline: 0
+}
+
+.firstname {
+    width: 45%;
+    float: left;
+}
+
+.lastname {
+    width: 45%;
+    float: right;
+    
+}
+.about {
+    width: 100%;
+    
+}
+ 
+.modal_eye_color {
+    position: relative;
+    align-content: center;
+    margin: 10px auto 10px auto;
+
+}
+.modal_eye_color_title {
+    font-size: 18px;
+    float: left;
+    padding-right: 10px;
+    margin-top: 13px;
+    margin-left: 55px;
+    color: rgb(109, 109, 109);
+    
+}
+
+select {
+    width: 45%; 
+    padding: .75rem 2.5rem .75rem 1rem;
+    appearance: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    text-align: center;
+    font-size: 18px;
+    color: rgb(109, 109, 109);
+    float: right;
+    margin-bottom: 20px;
+    background: #fff;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, .2);
+    height: 50px;
+
+}
+
+.modal_button {
+    display: block;
+    width: 280px;
+    background-color: #303030;
+    color: #fff;
+    border: none;
+    height: 50px;
+    font-size: 18px;
+    
+    position: relative;
+     margin: 0 auto;
+}
+.modal_button:hover {
+    box-shadow: 0 4px 30px rgba(0, 0, 0, .3);
+}
+
+.modal_input:hover {
+    background-color: rgb(230, 230, 230);
+}
+
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+.active {
+    color: red;
+
+}
+
+
