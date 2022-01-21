@@ -20,14 +20,16 @@ class Person {
         this.eyeColor = eyeColor;
     }
 
-    newHtmlTableRow(i) {
+    newHtmlTableRow() {
 
         const tableBody = document.querySelector('.table_body'),
             tableRow = document.createElement('tr'),
             cellFirstName = document.createElement('td'),
             cellLastName = document.createElement('td'),
             cellAbout = document.createElement('td'),
-            cellEyeColor = document.createElement('td');
+            cellEyeColor = document.createElement('td'),
+            cellEdits = document.createElement('td'),
+            editDiv = document.createElement('div');
 
 
         cellFirstName.innerHTML = this.firstName;
@@ -38,6 +40,10 @@ class Person {
         cellAbout.classList = 'module';
         cellEyeColor.innerHTML = this.eyeColor;
         cellEyeColor.classList = 'cell_eye_color';
+      /*  cellEdits.innerHTML = 'edits...';*/
+        editDiv.classList = 'editing_div';
+        editDiv.innerHTML = '<i class="far fa-edit"></i>';
+        cellEdits.classList ='cell_edits';
 
         tableRow.classList = 'row';
 
@@ -45,27 +51,20 @@ class Person {
         tableRow.appendChild(cellLastName);
         tableRow.appendChild(cellAbout);
         tableRow.appendChild(cellEyeColor);
+       cellEdits.appendChild(editDiv);
+        tableRow.appendChild(cellEdits);
+        
         tableBody.appendChild(tableRow);
-        /*console.log(tableRow.getBoundingClientRect());*/
 
     }
 
 }
 
-function createRowDiv (i) {
-    const editingBlock = document.querySelector('.editing_block'),
-    editingDiv = document.createElement('div');
-    editingDiv.innerHTML = i;
-    editingDiv.classList = 'editing_div';
-    editingBlock.appendChild(editingDiv);
-  /*  console.log(editingDiv.getBoundingClientRect());*/
-}
-
 getData(dataBaseUrl)
     .then(data => {
         data.forEach((obj, i) => {
-            new Person(obj.name.firstName, obj.name.lastName, obj.about, obj.eyeColor).newHtmlTableRow(i);
-            createRowDiv (i);
+            new Person(obj.name.firstName, obj.name.lastName, obj.about, obj.eyeColor).newHtmlTableRow();
+            EyeColor();
 
         });
     });
@@ -96,21 +95,18 @@ getData(dataBaseUrl)
 
  //Modal
 
- function OpenModalBlock(modalSelector) {
+function OpenModalBlock(modalSelector) {
     const modalWindow = document.querySelector(modalSelector);
     modalWindow.classList.add('show');
     modalWindow.classList.remove('hide');
-    RemoveActiveClass('.row');
-
-    /*document.body.style.overflow = 'hidden';*/
 }
 
 function CloseModalBlock(modalSelector) {
     const modalWindow = document.querySelector(modalSelector);
     modalWindow.classList.add('hide');
     modalWindow.classList.remove('show');
+    RemoveActiveClass('.row');
 
-    /*document.body.style.overflow = '';*/
 }
 function RemoveActiveClass(arr) {
     const arrObj = document.querySelectorAll(arr);
@@ -121,33 +117,22 @@ function RemoveActiveClass(arr) {
 }
 
 
-//Detectet Y position of Row 
-function AddRowActive(arr,position) {
-    const tableRows = document.querySelectorAll(arr);
-    tableRows.forEach((row)=> {
-        if(row.getBoundingClientRect().top == position){
-            row.classList.add('active');
-            /*console.log(row.getBoundingClientRect().top);*/
-        }
-    });
-}
-const editingBlock = document.querySelector('.editing_block'),
+//
+const table = document.querySelector('.table_sort'),
 modalClose = document.querySelector('.modal_close');
 
 //EventListener
-editingBlock.addEventListener('click', (event) => {
-    if(event.target.className === 'editing_div') {
-        OpenModalBlock('.modal_block');
-        const positionY = event.target.getBoundingClientRect().top;
-       /* console.log(positionY);*/
-       AddRowActive('.row', positionY);
-    }
-    
-    });
+table.addEventListener('click', (event) => {
+    if(event.target.className === 'editing_div' || event.target.className === 'far fa-edit') {
+       OpenModalBlock('.modal_block');
+       event.target.closest('.row').classList.add('active');
+
+    }  
+   });
 
 modalClose.addEventListener('click', ()=> {
     CloseModalBlock('.modal_block');
-   /* RemoveActiveClass('.row');*/
+
 });
 
 
@@ -168,8 +153,9 @@ function getFormData(event) {
             about: formAbout.value,
             eyeColor: formEyeColor.value
         }
-        CloseModalBlock('.modal_block');
         recordDataToTable(data);
+        CloseModalBlock('.modal_block');
+       
 };
 
  form = document.getElementById('form');
@@ -180,6 +166,7 @@ function getFormData(event) {
 
 function recordDataToTable (obj) {
     const arr = document.querySelectorAll('.row');
+
     arr.forEach((item) => {
         if(item.classList.contains('active')) {
         const recordName = item.querySelector('.cell_first_name'),
@@ -194,3 +181,33 @@ function recordDataToTable (obj) {
         }
     });
 }
+
+//Eye Color
+function EyeColor() {
+let arrEyeColors = document.querySelectorAll('.cell_eye_color');
+    arrEyeColors.forEach((el) => {
+        console.log(el);
+        switch(el.innerHTML) {
+            case 'blue':
+                el.style.backgroundColor = 'blue';
+                el.style.color = 'blue';
+                break;
+            case 'brown':
+                el.style.backgroundColor = 'rgb(165, 61, 42)';
+                el.style.color = 'rgb(165, 61, 42)';
+                break;
+            case 'red':
+                el.style.backgroundColor = 'red';
+                el.style.color = 'red';
+                break;
+            case 'green':
+                el.style.backgroundColor = 'green';
+                el.style.color = 'green';
+                break;
+            default:
+                console.log ('Error!');
+        }
+        
+});
+}
+
