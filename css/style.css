@@ -1,7 +1,8 @@
 body {
     background-color: #d7e0e9;
-    display: flex;
+ /*   display: flex;*/
     position: relative;
+    flex-direction: column;
 }
 
 /*Table*/
@@ -11,7 +12,15 @@ table {
     font-family: 'Inter', sans-serif;
     text-align: center;
     /*margin: left;*/
-    width: 100%;
+     width: 99%; 
+}
+.cell_eye_color {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none; 
+
 }
 
 th {
@@ -47,6 +56,8 @@ td {
 .cell_edits :hover {
     background-color: #adb7c0;
 }
+
+
 
 
 .module {
@@ -155,20 +166,6 @@ th.sorted[data-order="1"]::after {
     outline: 0
 }
 
-.firstname {
-    width: 45%;
-    float: left;
-}
-
-.lastname {
-    width: 45%;
-    float: right;
-    
-}
-.about {
-    width: 100%;
-    
-}
  
 .modal_eye_color {
     position: relative;
@@ -224,6 +221,31 @@ select {
     background-color: rgb(230, 230, 230);
 }
 
+/* Buttons */
+.buttons_hide {
+    min-width: 70%;
+    display:flex;
+    padding: 5px;
+    padding-left: 5px;
+    text-align: center;
+    
+}
+button {
+    margin-right: 5px;
+    font-size: 15px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none; 
+}
+
+
+.pagination_button {
+    padding-top: 10px;
+    text-align: center;
+}
+
 
 .show {
     display: block;
@@ -235,8 +257,8 @@ select {
 
 .active {
     color: #e2212e;
-
-
 } 
+
+
 
 

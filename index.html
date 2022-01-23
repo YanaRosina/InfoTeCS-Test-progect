@@ -7,26 +7,31 @@
     <title>Document</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body id="body">
+    <div class="buttons_hide">
+        <button id="first_name">Скрыть имя</button> 
+        <button id="last_name">Скрыть фамилию</button>
+        <button id="about">Скрыть описание</button> 
+        <button id="eye_color">Скрыть цвет глаз</button> 
+    </div>
     <table class="table_sort">
-        <thead>
+        <thead class="head">
             <tr> 
-                <th class="table_head">Имя</th> 
-                <th class="table_head">Фамилия</th> 
-                <th class="table_head">Описание</th>
-                <th class="table_head">Цвет глаз</th>
+                <th id="first_name_head" class="table_head">Имя</th> 
+                <th id="last_name_head" class="table_head">Фамилия</th> 
+                <th id="about_head" class="table_head">Описание</th>
+                <th id="eye_color_head" class="table_head">Цвет глаз</th>
             </tr>  
         </thead>
         <tbody class="table_body">
-
         </tbody>
-
     </table>
-   <!-- <div class="editing_block"></div> -->
+    
+    <div class="pagination_button"></div> 
     <div class='modal_block'>
         <div class="modal_dialog">
             <div class="modal_content">
@@ -52,6 +57,5 @@
         </div>
     </div>
     <script src="./js/script.js"></script>
-   <!--<script src="./db.json"></script>-->
 </body>
 </html>
