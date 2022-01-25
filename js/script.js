@@ -320,7 +320,7 @@ function showPage (count) { //Передаем в функцию id кнопки
         endRow = upperRow+rowShow; // Определяем номер последней отображаемой строки
     let i = 0;
     rows.forEach((row)=> { // Перебираем строки и скрываем все меньше первой отображаемой и больше последней
-        console.log(i, upperRow, endRow);
+
         if((i <= (upperRow-1)) || (i >= endRow)) {
             row.classList.add('hide');
         } else {
